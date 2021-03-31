@@ -10,6 +10,10 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
+app.get("/perguntas", (req, res) => {
+    app.render( );
+})
+
 app.listen(3000, () => {
     console.log("Servidor iniciado!");
 });
