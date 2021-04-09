@@ -2,15 +2,16 @@ const express = require("express");
 const app = express();
 const bodyParsrer = require("body-parser");
 const connection = require("./database/database");
-const perguntaModel = require("./database/Pergunta");
+const Pergunta = require("./database/Pergunta");
 
+// Database connection
 connection.authenticate().then(() => {
     console.log("Conexão estabelecida!");
 }).catch((msgErro) => {
     console.log(msgErro);
 })
 
-// Usa o ejs como template engine
+// Use ejs template engine
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
@@ -30,7 +31,12 @@ app.post("/salvarpergunta", (req, res) => {
     var title = req.body.title;
     var description = req.body.description;
 
-    res.send("Formulário recebido! Título: " + title + "Descrição: " + description);
+    Pergunta.create({
+        titulo: title,
+        descricao: description
+    }).then(() => {
+        res.redirect("/");
+    });
 });
 
 app.listen(3000, () => {
