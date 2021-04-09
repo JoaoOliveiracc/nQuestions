@@ -1,6 +1,14 @@
 const express = require("express");
 const app = express();
 const bodyParsrer = require("body-parser");
+const connection = require("./database/database");
+const perguntaModel = require("./database/Pergunta");
+
+connection.authenticate().then(() => {
+    console.log("Conexão estabelecida!");
+}).catch((msgErro) => {
+    console.log(msgErro);
+})
 
 // Usa o ejs como template engine
 app.set("view engine", "ejs");
@@ -22,7 +30,7 @@ app.post("/salvarpergunta", (req, res) => {
     var title = req.body.title;
     var description = req.body.description;
 
-    res.send("Formulário recebido! Título: " + title + " Descrição: " + description);
+    res.send("Formulário recebido! Título: " + title + "Descrição: " + description);
 });
 
 app.listen(3000, () => {
