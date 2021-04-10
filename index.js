@@ -45,6 +45,20 @@ app.post("/salvarpergunta", (req, res) => {
     });
 });
 
+app.get("/pergunta/descricao/:id", (req, res) => {
+    var id = req.params.id;
+
+    Pergunta.findOne({
+        where: {id: id}
+    }).then(pergunta => {
+        if(pergunta != undefined) {
+            res.render("perguntaDescricao")
+        }else {
+            res.redirect("/");
+        }
+    });
+});
+
 app.listen(3000, () => {
     console.log("Servidor iniciado!");
 });
