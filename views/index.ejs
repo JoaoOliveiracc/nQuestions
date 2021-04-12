@@ -2,7 +2,7 @@
 
 <body>
     <%- include("partials/navbar.ejs") %>
-
+    
     <div class="container mt-4">
         <hr>
         <div class="header d-flex justify-content-between">
@@ -16,7 +16,9 @@
                     <div class="card-header"><h3><%= pergunta.titulo %></h3></div>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-primary">Responder</button>
+                    <a href="/pergunta/descricao/<%= pergunta.id %>">
+                        <button class="btn btn-primary">Responder</button>
+                    </a>
                 </div>
             </div>
         <% }) %>
