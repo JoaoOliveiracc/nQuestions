@@ -12,6 +12,7 @@
             <h3>Deixe sua resposta</h3>
             <label for="" class="mt-2">Resposta:</label>
             <textarea placeholder="Digite sua resposta..." class="form-control mt-2" name="corpo" cols="30" rows="10"></textarea>
+            <input type="hidden" name="pergunta" value="<%= pergunta.id %>">
             <button type="submit" class="btn btn-primary mt-2">Responder</button>
         </form>
 
