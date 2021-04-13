@@ -62,6 +62,18 @@ app.get("/pergunta/descricao/:id", (req, res) => {
     });
 });
 
+app.post("/pergunta/resposta", (req, res) => {
+    var corpo = req.body.corpo;
+    var perguntaId = req.body.pergunta;
+
+    Resposta.create({
+        corpo: corpo,
+        pergunta_id: perguntaId
+    }).then(() => {
+        res.redirect("/pergunta/descricao/"+perguntaId);
+    });
+});
+
 app.listen(3000, () => {
     console.log("Servidor iniciado!");
 });

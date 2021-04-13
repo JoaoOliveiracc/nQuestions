@@ -3,12 +3,11 @@
 <body>
     <%- include("partials/navbar.ejs") %>
     <div class="container mt-4">
-        <hr>
         <h1><%= pergunta.titulo %></h1>
         <p><%= pergunta.descricao %></p>
         <hr>
 
-        <form action="">
+        <form method="POST" action="/pergunta/resposta">
             <h3>Deixe sua resposta</h3>
             <label for="" class="mt-2">Resposta:</label>
             <textarea placeholder="Digite sua resposta..." class="form-control mt-2" name="corpo" cols="30" rows="10"></textarea>
